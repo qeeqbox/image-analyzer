@@ -6,13 +6,25 @@ Image analyzer is an interface that simplifies interaction with image-related de
 The interface was initially part of an internal project that detects abusive content with the possibility of tracing the subjects.
 
 
-# Structure
+## Structure
 <img src="https://raw.githubusercontent.com/qeeqbox/image-analyzer/main/readme/structure.png">
 
-# Interface
+## Interface
 <img src="https://raw.githubusercontent.com/qeeqbox/image-analyzer/main/readme/intro.gif" style="max-width:768px"/>
 
-# Name structue
+## How to run?
+
+```sh
+pip3 install image-analyzer
+```
+
+```python
+from imageanalyzer import run_server
+run_server(settings={'input_shape':[224,224], 'percentage':0.90, 'options':[], 'weights': {'safe':50,'maybe':75,'unsafe':100}, 'verbose':True},port=8989)
+```
+
+
+## Name structue
 - [Name]			  Name of the model
 - [Info]			  Description
 - [Categories]	Your model categories (if any)
