@@ -15,6 +15,7 @@ The interface was initially part of an internal project that detects abusive con
 ## How to run?
 
 ```sh
+sudo apt-get install -y python3-opencv
 pip3 install image-analyzer
 ```
 
