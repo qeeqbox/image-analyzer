@@ -1,4 +1,4 @@
-.. image:: https://raw.githubusercontent.com/qeeqbox/image-analyzer/main/readme/imageanalyzer_logo.png
+<p align="center"> <img src="https://raw.githubusercontent.com/qeeqbox/image-analyzer/main/readme/imageanalyzer_logo.png"></p>
 
 #
 Image analyzer is an interface that simplifies interaction with image-related deep learning models. The interface has built-in features that get adjusted based on the models. You need to set the destination folder that contains your models with specific pattern names. The built-in features will use the names. 
@@ -7,10 +7,10 @@ The interface was initially part of an internal project that detects abusive con
 
 
 # Structure
+<img src="https://raw.githubusercontent.com/qeeqbox/image-analyzer/main/readme/structure.png">
 
 # Interface
-
-
+<img src="https://raw.githubusercontent.com/qeeqbox/image-analyzer/main/readme/intro.gif" style="max-width:768px"/>
 
 # Name structue
 [Name]			Name of the model
