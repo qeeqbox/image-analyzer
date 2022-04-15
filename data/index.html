@@ -1,0 +1,857 @@
+<!--
+//  -------------------------------------------------------------
+//  author        Giga
+//  project       qeeqbox/icterid-template
+//  email         gigaqeeq@gmail.com
+//  description   My webapps icterid template
+//  licensee      AGPL-3.0
+//  -------------------------------------------------------------
+//  contributors list qeeqbox/icterid-template/graphs/contributors
+//  -------------------------------------------------------------
+-->
+
+<html>
+<meta charset="utf-8" />
+<title>QeeqBox - Image-Analyzer</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.default.css" />
+<script src="https://code.jquery.com/jquery-2.1.1.js"></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<style>
+  /*All*/
+
+
+  html,
+  body {
+    width: 100%;
+    height: 100%;
+    margin: 0 !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background-color: #212222;
+  }
+
+  header {
+    background-color: #2b2c2c;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    overflow: hide;
+    box-shadow: 0 8px 5px rgba(0, 0, 0, .08);
+  }
+
+  a {
+    color: #d0d0d0 !important;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  body>* {
+    font-family: monospace !important;
+    font-size: 12px !important;
+    line-height: normal;
+    cursor: default !important;
+    color: #d0d0d0 !important;
+  }
+
+  th {
+    text-align: left;
+    font-weight: normal !important;
+    background-color: #383939 !important;
+  }
+
+  table {
+    color: #d0d0d0 !important;
+    font-size: 12px !important;
+    margin-bottom: 20px;
+    border: 0;
+    box-shadow: none;
+    -webkit-border-radius: 2px !important;
+    border-radius: 2px !important;
+    width: 100%;
+  }
+
+  tr {
+    border-bottom: 1px solid #3c3c3c;
+  }
+
+  tr:first-child {
+    border-top: none;
+  }
+
+  td:not(:last-child), th:not(:last-child){
+    padding-right: 15px;
+  }
+
+  tr:last-child {
+    border-bottom: none;
+  }
+
+  table tr th:first-child,
+  table tr td:first-child {
+    width: 45px;
+    min-width: 45px;
+    max-width: 45px;
+    word-break: break-all;
+  }
+
+  table img {
+    height: 100px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    max-width: 100px;
+  }
+
+  input[type='checkbox'] {
+    -webkit-appearance: none;
+    -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
+    padding: 5px;
+    height: 5px;
+    color: #c0c0c0;
+    border: 1px solid #b4b4b4;
+    border-radius: 2px !important;
+    outline: none;
+  }
+
+  input[type='checkbox']:checked {
+    position: relative;
+  }
+
+  input[type='checkbox']:checked:before {
+    position: absolute;
+    display: block;
+    background: none #b4b4b4;
+    content: '';
+    height: 8px;
+    width: 8px;
+    left: 1px;
+    top: 1px;
+  }
+
+
+  input[type="text"] {
+    background-color: #383939 !important;
+    -webkit-border-radius: 2px !important;
+    border-radius: 2px !important;
+    border: none;
+    height: 26px;
+    padding: 3px 6px 3px 6px !important;
+    color: #d0d0d0 !important;
+    font-size: 12px;
+    flex: 1;
+    min-width: 250px;
+  }
+
+  input[type="button"] {
+    border: 0;
+    background-color: #383939 !important;
+    box-shadow: none;
+    -webkit-border-radius: 2px !important;
+    border-radius: 2px !important;
+    color: #d0d0d0 !important;
+    height: 26px;
+    border: none;
+    font-size: 12px;
+  }
+
+  *:focus {
+    outline: none;
+  }
+
+  /*Nav bar*/
+
+
+  header .navbar {
+    height: 50px;
+    color: #d0d0d0 !important;
+  }
+
+
+  header .navbar-nav {
+    flex-direction: inherit !important;
+  }
+
+  header .nav-item {
+    font-size: 14px;
+    padding-left: 15px;
+  }
+
+  /*Spinner*/
+
+/*
+    @keyframes spinner {
+    0% {
+      stroke-dasharray: 0 0 300 300;
+      stroke: #1e9040ff;
+    }
+
+    50% {
+      stroke-dasharray: 0 150 300 300;
+      stroke: #0ca6fbff;
+    }
+
+    75% {
+      stroke-dasharray: 150 150 150 150;
+      stroke: #ffd732ff;
+    }
+
+    100% {
+      stroke-dasharray: 300 300 150 150;
+      stroke: #1e9040ff;
+    }
+  }
+
+*/
+
+  @keyframes spinner {
+    0% {
+      stroke-dasharray: 0 0 300 300;
+    }
+
+    50% {
+      stroke-dasharray: 0 150 300 300;
+    }
+
+    75% {
+      stroke-dasharray: 150 150 150 150;
+    }
+
+    100% {
+      stroke-dasharray: 300 300 150 150;
+    }
+  }
+
+  #hex-spinner-section {
+    position: fixed;
+    z-index: 99999;
+    width: 100%;
+    height: 100%;
+    background: #212222;
+    opacity: .9;
+    display: none;
+  }
+
+  #hex-spinner-section .hex-spinner {
+    width: 140px;
+    height: 140px;
+    animation: spinner 2s linear infinite;
+  }
+
+  #hex-spinner-section .waiting-box {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+  }
+
+  #hex-spinner-section .logs {
+    padding-top: 20px
+  }
+
+  #hex-spinner-section .logs_cancel {
+    padding-top: 10px;
+    display: none;
+  }
+
+  /*Main app + all sections settings*/
+
+
+  .icterid-app-wrapper {
+    display: flex;
+    margin-left: auto;
+    margin-top: 50px;
+    padding-top: 20px;
+    overflow-y: auto !important;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+    scrollbar-color: #aa6400 #272c2e;
+    justify-content: center;
+    width: 100%;
+  }
+
+  .icterid-app {
+    width: 95%;
+  }
+
+  @media (min-width: 1280px) {
+    .icterid-app {
+      width: 1280px;
+    }
+  }
+
+  .icterid-app .cell-separator {
+    width: 15px;
+  }
+
+  .icterid-app .cell-separator-line {
+    width: 2px;
+    margin-left: 12px;
+    margin-right: 12px;
+    height: 26px;
+    background-color: #383939 !important
+  }
+
+
+  .icterid-app .div-right {
+    flex: 1;
+    margin-left: 10px !important;
+  }
+
+  .icterid-app .div-left {
+    font-size: 16px;
+    line-height: 16px;
+  }
+
+
+  .icterid-app .div-header {
+    display: flex;
+    height: 15px;
+    color: #d0d0d0 !important;
+    margin-bottom: 20px;
+  }
+
+  .icterid-app .div-100 {
+    width: 100%;
+    display: flex;
+    margin-bottom: 20px;
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .icterid-app .div-100>* {
+    margin-top: 5px;
+    margin-bottom: 5px;
+  }
+
+  .icterid-app .box-border-style {
+    background-color: #2b2c2c !important;
+    -webkit-border-radius: 2px !important;
+    border-radius: 2px !important;
+    border: none;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+  }
+
+  .icterid-app .div-right-icon {
+    float: right;
+    font-size: 16px;
+  }
+
+  /*target-section - selectize*/
+
+  #target-section #target-options-selectized {
+    color: #d0d0d0 !important;
+    padding: 3px 6px 3px 6px !important;
+  }
+
+  #target-section .selectize-control {
+    position: static !important;
+    background-color: #383939 !important;
+    max-width:600px;
+    min-height: 20px;
+    line-height: 20px;
+    color: #d0d0d0 !important;
+  }
+
+  #target-section .selectize-input {
+    color: #d0d0d0 !important;
+    padding: 0px;
+    background-color: #383939 !important;
+    border: none !important;
+    min-width: 400px;
+    min-height: 20px;
+    line-height: 20px !important;
+    font-size: 10px;
+  }
+
+  #target-section .selectize-dropdown {
+    color: #d0d0d0 !important;
+    background-color: #383939 !important;
+    border: none !important;
+  }
+
+  #target-section .selectize-dropdown .optgroup {
+    border-top: 1px solid #666666;
+  }
+
+
+  #target-section .selectize-input .item {
+    background-color: #aa6400;
+  }
+
+  #target-section .item {
+    background: #aa6400 !important;
+    color: #ffffff !important;
+  }
+
+  #target-section .selectize-input [data-value] {
+    background-color: #111111;
+    background-image: none !important;
+    background-repeat: none !important;
+    -webkit-box-shadow: none !important;
+    box-shadow: none !important
+  }
+
+  #target-section .selectize-control.multi .selectize-input>div {
+    border: none !important;
+  }
+
+  #target-section .selectize-dropdown-content .active {
+    background: #2196f3 !important;
+    color: #ffffff !important;
+  }
+
+  #target-section .selectize-control.plugin-remove_button [data-value] .remove {
+    border-left: none !important;
+  }
+
+  #target-section .optgroup-header {
+    border: none !important;
+    background-color: #383939 !important;
+    color: #d0d0d0 !important;
+    font-weight: bold;
+    font-size: 14px !important;
+  }
+
+  /*target-section - options modal*/
+
+
+  #icterid-app-settings-modal .modal-header {
+    border-bottom: 1px solid #3c3c3c;
+  }
+
+  #icterid-app-settings-modal .modal-content {
+    background-color: #2b2c2c !important;
+    -webkit-border-radius: 2px !important;
+    border-radius: 2px !important;
+    border: none;
+    padding: 10px 10px 10px 10px;
+    margin-bottom: 20px;
+  }
+
+  #icterid-app-settings-modal .modal-footer {
+    border-top: 1px solid #3c3c3c;
+  }
+
+  #icterid-app-settings-modal .modal-body .div-right {
+    flex: 1;
+  }
+
+  #icterid-app-settings-modal .modal-body .div-left {
+    font-size: 14px;
+    line-height: 14px;
+  }
+
+  #icterid-app-settings-modal .modal-body .div-header {
+    display: flex;
+    height: 15px;
+    color: #d0d0d0 !important;
+    margin-bottom: 10px;
+  }
+
+  #icterid-app-settings-modal .modal-dialog {
+    height: calc(100vh - 100px) !important;
+    display: flex;
+  }
+
+  #icterid-app-settings-modal .modal-content {
+    margin: auto !important;
+    height: fit-content !important;
+  }
+
+  #icterid-app-settings-modal #modal-app-options {
+    margin-top: 10px;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  #icterid-app-settings-modal #modal-app-options-list {
+    list-style-type: none;
+    max-height: 200px;
+    text-align: left;
+    margin: 0;
+    padding: 0;
+    overflow: auto;
+    overflow-y: auto;
+  }
+
+  #icterid-app-settings-modal #modal-app-options li {
+    height: 20px;
+    line-height: 20px;
+  }
+
+  #icterid-app-settings-modal #modal-app-options label {
+    margin: 0;
+    padding-left: 5px;
+  }
+
+  #icterid-app-settings-modal #modal-app-options-buttons {
+    display: inline-flex;
+    margin-top: 10px;
+  }
+
+  #models-folder{
+    width: 100%;
+  }
+
+  .blur-image{
+      -webkit-filter: blur(5px); /* Safari 6.0 - 9.0 */
+      filter: blur(5px);
+  }
+
+  /*save-to-file-section*/
+
+  #save-to-file-section {
+    display: none;
+  }
+</style>
+
+<body>
+
+  <div class="waiting" id="hex-spinner-section">
+    <div class="waiting-box">
+      <svg class="hex-spinner" viewBox="0 -5 100 110">
+        <polygon stroke-width="7" stroke="#aa6400" fill-opacity="0" id="hex" points="50 1 95 25 95 75 50 99 5 75 5 25" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <div class="logs" id="logs"></div>
+     <!-- <div class="logs_cancel" id="cancel_task">Cancel task? <i class="fa fa-window-close"></i></div> -->
+    </div>
+  </div>
+
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <a class="navbar-brand" href="#">Image-Analyzer</a>
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a href="https://github.com/qeeqbox/icterid-template/stargazers"> <i class="fa fa-star"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="https://github.com/qeeqbox/icterid-template/archive/main.zip"> <i class="fa fa-download"></i></a>
+        </li>
+        <li class="nav-item">
+          <a href="https://github.com/qeeqbox/icterid-template/watchers"> <i class="fa fa-eye"></i></a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <div class="icterid-app-wrapper">
+    <div class="icterid-app">
+      <div class="modal fade" id="icterid-app-settings-modal" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <div class="div-left">Settings</div>
+              <div class="div-right"></div>
+            </div>
+            <div class="modal-body">
+              <input type="text" id="models-folder" placeholder="%< placeholder_2 >%" />
+            </div>
+            <div class="modal-footer">
+              <input type="button" id="save-settings" value="Save" />
+              <input type="button" value="Dismiss" data-dismiss="modal" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="box-border-style" id="target-section">
+        <div class="div-header">
+          <div class="div-left">Enter Target</div>
+          <div class="div-right"><i id="open-settings" class="div-right-icon fa fa-cog"></i></div>
+        </div>
+        <div class="div-100 collapse show">
+          <input type="text" id="target-text" placeholder="URL or Path to image\folder" />
+          <div class="cell-separator"></div>
+          <div name="target-options" placeholder="Choose some options..." id="target-options" multiple="multiple">
+          </div>
+          <div class="cell-separator"></div>
+          <div>or</div>
+          <div class="cell-separator"></div>
+          <input type="button" id="default-options" value="Default Options" />
+          <div class="cell-separator-line"></div>
+          <input type="button" id="start-main" value="Start" />
+          <div class="cell-separator"></div>
+          <input type="button" id="clear-options" value="Clear" />
+          <div class="cell-separator"></div>
+          <input type="button" id="reset-everything" value="Reset" />
+        </div>
+      </div>
+      <div id="results">
+      </div>
+      <div class="box-border-style" id="save-to-file-section">
+        <div class="div-header">
+          <div class="div-left">Save to file as</div>
+          <div class="div-right"><i class="div-right-icon fa fa-caret-up"></i></div>
+        </div>
+        <div class="div-100 show">
+          <input type="button" id="download-json" value="JSON" />
+        </div>
+      </div>
+    </div>
+  </div>
+  <script>
+    const delay = x => new Promise(y => setTimeout(y, x))
+    const verbose = true
+    const target_input_options = [%< placeholder_1 >%{
+        group: 'Website or link to image',
+        value: 'fast',
+        name: 'Fast analzying',
+        disable: false,
+      },{
+        group: 'Website or link to image',
+        value: 'slow',
+        name: 'Slow analzying',
+        disable: false,
+      },{
+        group: 'Website or link to image',
+        value: 'firefox',
+        name: 'Use firefox driver',
+        disable: false,
+      },{
+        group: 'Website or link to image',
+        value: 'chrome',
+        name: 'Use chrome driver',
+        disable: false,
+      },
+      {
+        group: 'Results',
+        value: 'full',
+        name: 'Show full results',
+        disable: false,
+      },
+      {
+        group: 'Results',
+        value: 'normal',
+        name: 'Show normal results',
+        disable: false,
+      },
+      {
+        group: 'Results',
+        value: 'blur',
+        name: 'Blur images',
+        disable: false,
+      }
+    ];
+
+    const target_input_groups = [{
+        group: 'Models',
+      },{
+        group: 'Website or link to image',
+      },
+      {
+        group: 'Results',
+      }
+    ];
+
+    let interval_logs;
+    let output_json = {};
+    let global_uuid = '';
+    let global_lock = false
+    let current_settings = [];
+
+    $('#target-options').selectize({
+      options: target_input_options,
+      optgroups: target_input_groups,
+      optgroupField: 'group',
+      optgroupLabelField: 'group',
+      optgroupValueField: 'group',
+      valueField: 'value',
+      labelField: 'name',
+      disabledField: 'disable',
+      searchField: ['group', 'value'],
+      plugins: ['remove_button']
+    });
+
+    function spinner_on_off(on_off, text_only, text = '', cancel = false) {
+      if (on_off) {
+        if(text_only){
+          $('#hex-spinner-section #logs').text(text);
+        }
+        else{
+          $('#logs').text(text);
+          $('#hex-spinner-section').show();
+          if (cancel === true) {
+            $('#hex-spinner-section .logs_cancel').show();
+          }
+        }
+      } else {
+        $('#hex-spinner-section #logs').text('');
+        $('#hex-spinner-section').hide();
+        $('#hex-spinner-section .logs_cancel').hide();
+      }
+    }
+
+    function cancel_task() {
+      global_lock = true
+    }
+
+    function reset_everything() {
+      $("[id*='-section']").each(function() {
+        if ($(this).attr('id') != "target-section") {
+          $(this).hide();
+        }
+      })
+    }
+
+    async function add_table(table) {
+      if ("header" in table && "body" in table) {
+        if (table["header"].length > 0 && table["body"].length) {
+          var temp_th = ""
+          table["header"].forEach(function(header_item) {
+            temp_th += "<th>" + header_item + "</th>"
+          })
+          x = `<div class="box-border-style" id="` + table["name"] + `-section"><div class="div-header"><div class="div-left">` + table["info"] +
+            `</div><div class="div-right"><i class="div-right-icon fa fa-caret-up"></i></div></div><div class="table-wrapper show"><table><thead><tr>` + temp_th + `</tr></thead><tbody class="table-content"></tbody></table></div></div>`
+          $("#results").append(x)
+          table["body"].forEach(function(body_item, item_place) {
+            var temp_td = ""
+            table["header"].forEach((header_item) => {
+              if (header_item == "image"){
+                if ($('#target-options')[0].selectize.items.includes("blur"))
+                {
+                  temp_td += "<td><img class=\"blur-image\" src=\"" + body_item[header_item] + "\"</td>";
+                }
+                else{
+                  temp_td += "<td><img src=\"" + body_item[header_item] + "\"</td>";
+                }
+              }
+              else{
+                temp_td += "<td>" + body_item[header_item] + "</td>";
+              }
+            });
+            if (temp_td != "") {
+              var new_row_element = document.createElement('tr');
+              new_row_element.innerHTML = temp_td
+              $("#" + table["name"] + "-section tbody").append(new_row_element);
+            }
+          })
+        }
+      }
+    }
+
+    function enable_disable(section){
+      switch (section) {
+        case 'save':
+          $('#save-to-file-section').show();
+          break;
+        default:
+      }
+    }
+
+    async function start_main_test(input, options){
+      reset_everything();
+      spinner_on_off(true, false, "Working...", true)
+      try {
+        await $.ajax({
+          type: 'POST',
+          dataType : 'json',
+          contentType : 'application/json',
+          url: '/process',
+          data: JSON.stringify({
+            target: input,
+            group: false,
+            options: options,
+            uuid: '123',
+          }),
+        }).done((data) => {
+          if ("images" in data){
+            add_table(data["images"], options)
+          }
+          if ("urls" in data){
+            add_table(data["urls"], options)
+          }
+        });
+      } catch (err) {
+        verbose && console.log(err);
+      }
+      spinner_on_off(false, false)
+    }
+
+    function save_to_file_as(output_json) {
+      try {
+        window.URL = window.URL || window.webkitURL;
+        const a = document.createElement('a');
+        a.download = `${Math.random().toString(36).substring(2).toLowerCase()}.json`;
+        a.innerHTML = 'Download File';
+        a.href = window.URL.createObjectURL(new Blob([JSON.stringify(output_json)], {
+          type: 'application/json',
+        }));
+        a.style.display = 'none';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } catch (err) {
+        verbose && console.log(err);
+      }
+    }
+
+    $(document).ready(function() {
+
+      $('#target-section #start-main').click((e) => {
+        e.preventDefault();
+        start_main_test($('#target-text').val(),$('#target-options')[0].selectize.items);
+      });
+
+      $('#target-section #reset-everything').click((e) => {
+        e.preventDefault();
+        reset_everything();
+      });
+
+      $('#target-section #clear-options').click((e) => {
+        e.preventDefault();
+        $('#target-options')[0].selectize.clear();
+      });
+
+      $('#target-section #open-settings').click((e) => {
+        e.preventDefault();
+        $('#icterid-app-settings-modal').modal();
+      });
+
+      $('#icterid-app-settings-modal #save-settings').click((e) => {
+        e.preventDefault();
+        $('#icterid-app-settings-modal').modal('toggle');
+      });
+
+      $('#target-section #default-options').click((e) => {
+        e.preventDefault();
+        $('#target-options')[0].selectize.clear();
+        $('#target-options')[0].selectize.setValue(['fast','normal']);
+      });
+
+      $('#save-to-file-section #download-json').click((e) => {
+        e.preventDefault();
+        save_to_file_as(test)
+      });
+
+      $('#hex-spinner-section #cancel_task').click((e) => {
+        e.preventDefault();
+        cancel_task()
+      });
+
+      $('body').on('click', '.div-header', function() {
+        if (this.innerText !== 'Enter Target') {
+          if ($(this).next().hasClass('show')) {
+            $(this).find('.div-right-icon').removeClass('fa-caret-up');
+            $(this).find('.div-right-icon').addClass('fa-caret-down');
+          } else {
+            $(this).find('.div-right-icon').removeClass('fa-caret-down');
+            $(this).find('.div-right-icon').addClass('fa-caret-up');
+          }
+          $(this).next().collapse('toggle');
+        }
+      });
+    })
+  </script>
+</body>
+
+</html>
