@@ -10,7 +10,7 @@ setup(
     name='image-analyzer',
     author='QeeqBox',
     author_email='gigaqeeq@gmail.com',
-    description="Browsers options",
+    description="Image analyzer is an interface that simplifies interaction with image-related deep learning models",
     long_description=long_description,
     version='0.1',
     license='AGPL-3.0',
